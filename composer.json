@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rules\\": "Rules/",
+            "Tests\\": "Tests/"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^9.6"
+    }
+}
