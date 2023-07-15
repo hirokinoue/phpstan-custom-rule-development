@@ -4,16 +4,16 @@ PHPStanのCustom Rule開発環境サンプル
 ## ディレクトリ構成
 ```
 .
-|-- phpstan.neon       # config（実行したいCustom Ruleをここで指定する）
-|-- src                  
-|   `-- SomeClass.php  # 解析対象のコード
 |-- Rules
-|   `-- MyRule.php     # カスタムルール
-`-- Tests
-    `-- MyRuleTest
-        |-- data
-        |   `-- my-rule.php  # テストデータ
-        `-- MyRuleTest.php   # テストコード
+|   `-- MyRule.php           # カスタムルール
+|-- Tests
+|   `-- MyRuleTest
+|       |-- data
+|       |   `-- my-rule.php  # テストデータ
+|       `-- MyRuleTest.php   # テストコード
+|-- src                  
+|   `-- SomeClass.php        # 解析対象のコード
+`-- phpstan.neon             # config（実行したいCustom Ruleをここで指定する）
 ```
 
 ## 参考
@@ -31,7 +31,7 @@ make run
 make clean
 ```
 
-## Rector実行
+## 解析実行
 ```
 XDEBUG_MODE=off ./vendor/bin/phpstan analyze -l 0 src
 XDEBUG_MODE=off ./vendor/bin/phpstan analyse -l 0 --debug src
@@ -44,7 +44,7 @@ XDEBUG_MODE=off ./vendor/bin/phpunit Tests
 ```
 
 ### デバッグ
-rector.phpを修正して並行処理を無効化してから`--xdebug`オプションを付けて実行する。
+`--xdebug`オプションを付けて実行する。並行処理を無効化するため`--debug`オプションも付ける。
 ```
 ./vendor/bin/phpstan analyze --debug --xdebug -l 0 src 
 ```
