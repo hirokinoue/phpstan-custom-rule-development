@@ -7,6 +7,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Node\InClassNode;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Type\ArrayType;
 use PHPStan\Type\ObjectType;
 
 class NameNodeHolderFindRule implements Rule
@@ -30,6 +31,9 @@ class NameNodeHolderFindRule implements Rule
                 $propertyName = $prop->name->toString();
                 $propertyReflection = $classReflection->getNativeProperty($propertyName);
                 $propertyType = $propertyReflection->getReadableType();
+                if ($propertyType instanceof ArrayType) {
+                    $propertyType = $propertyType->getItemType();
+                }
                 $trinary = $propertyType->isSuperTypeOf(new ObjectType('PhpParser\Node\Name'));
                 if (!$trinary->no()) {
                     return [
