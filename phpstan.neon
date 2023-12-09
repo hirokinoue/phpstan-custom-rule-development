@@ -1,3 +1,4 @@
 rules:
     - Rules\MyRule
     - Rules\CallStaticMethodInClassRule
+    - Rules\NameNodeHolderFindRule
