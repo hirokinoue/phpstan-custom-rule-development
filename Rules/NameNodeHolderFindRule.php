@@ -8,6 +8,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\Node\InClassNode;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\ArrayType;
+use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 
 class NameNodeHolderFindRule implements Rule
@@ -33,6 +34,9 @@ class NameNodeHolderFindRule implements Rule
                 $propertyType = $propertyReflection->getReadableType();
                 if ($propertyType instanceof ArrayType) {
                     $propertyType = $propertyType->getItemType();
+                }
+                if ($propertyType instanceof MixedType) {
+                    continue;
                 }
                 $trinary = $propertyType->isSuperTypeOf(new ObjectType('PhpParser\Node\Name'));
                 if (!$trinary->no()) {
