@@ -30,7 +30,8 @@ class NameNodeHolderFindRuleTest extends RuleTestCase
             [__DIR__ . '/data/name-holder/name-node.php', [['App\DummyFuncCall', 8]]],
             [__DIR__ . '/data/name-holder/array-including-name-node.php', [['App\DummyTraitUse', 8]]],
             [__DIR__ . '/data/name-holder/union-including-name-node.php', [['App\DummyUnionType', 10]]],
-            [__DIR__ . '/data/non-name-holder.php', []],
+            [__DIR__ . '/data/non-name-holder/no-name-node.php', []],
+            [__DIR__ . '/data/non-name-holder/mixed-type-exists.php', []],
         ];
     }
 }
